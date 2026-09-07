@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карта Пустыни — Золотой Эрг</title>
+<style>
+  body { margin:0; background:#1a130c; color:#f5e6c8; font-family: 'Segoe UI', Georgia, serif; display:flex; flex-direction:column; align-items:center; }
+  h1 { margin:20px 0 5px; letter-spacing:2px; }
+  p.sub { opacity:0.7; margin:0 0 15px; }
+  .map-wrap { background:#e9c88a; border:8px solid #5a3d1e; border-radius:12px; box-shadow:0 10px 50px rgba(0,0,0,.6); overflow:hidden; max-width:1200px; width:95%; }
+  svg { display:block; width:100%; height:auto; }
+  .legend { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin:15px; font-size:15px; }
+  .legend span { background:#2a2013; padding:6px 12px; border-radius:20px; border:1px solid #6b4d2a; }
+  button { margin-bottom:25px; padding:10px 20px; font-size:16px; background:#c89a4a; border:none; border-radius:8px; cursor:pointer; font-weight:bold; }
+  button:hover { background:#e5b85c; }
+</style>
+</head>
+<body>
+<h1>🗺️ КАРТА ПУСТЫНИ — ЗОЛОТОЙ ЭРГ</h1>
+<p class="sub">Караванный путь • Масштаб 1 : 500 000 • Составлено Гильдией Картографов</p>
+
+<div class="map-wrap">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="sand"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.42  0 0 0 0 0.25  0 0 0 0.25 0"/><feComposite operator="over" in2="SourceGraphic"/></filter>
+    <filter id="rough"><feTurbulence baseFrequency="0.02" numOctaves="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="12"/></filter>
+    <radialGradient id="oasisWater" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#7dd8f0"/><stop offset="60%" stop-color="#2aa5c4"/><stop offset="100%" stop-color="#116a85"/></radialGradient>
+    <linearGradient id="duneShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#d4a55e"/><stop offset="50%" stop-color="#f2d89a"/><stop offset="100%" stop-color="#c68c3e"/></linearGradient>
+  </defs>
+
+  <!-- фон -->
+  <rect width="1200" height="800" fill="#e9c88a"/>
+  <rect width="1200" height="800" fill="#e9c88a" filter="url(#sand)" opacity="0.9"/>
+
+  <!-- сетка координат -->
+  <g stroke="#8a6230" stroke-width="1" opacity="0.3" stroke-dasharray="6 6">
+    <line x1="200" y1="0" x2="200" y2="800"/><line x1="400" y1="0" x2="400" y2="800"/><line x1="600" y1="0" x2="600" y2="800"/><line x1="800" y1="0" x2="800" y2="800"/><line x1="1000" y1="0" x2="1000" y2="800"/>
+    <line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="320" x2="1200" y2="320"/><line x1="0" y1="480" x2="1200" y2="480"/><line x1="0" y1="640" x2="1200" y2="640"/>
+  </g>
+  <g fill="#6b4d2a" font-size="16" font-family="monospace" opacity="0.7">
+    <text x="10" y="25">A1</text><text x="210" y="25">B1</text><text x="410" y="25">C1</text><text x="610" y="25">D1</text><text x="810" y="25">E1</text><text x="1010" y="25">F1</text>
+  </g>
+
+  <!-- Каньон Красных Скал слева -->
+  <g filter="url(#rough)">
+    <path d="M0,120 L140,100 L180,220 L120,350 L160,480 L90,600 L130,750 L0,780 Z" fill="#b0512c" stroke="#6e2f14" stroke-width="4"/>
+    <path d="M20,150 L110,140 L130,250 L80,360 L110,480 L60,600 L90,700 L20,720 Z" fill="#d97a45" opacity="0.9"/>
+    <path d="M40,180 L90,180 L100,260 L60,340 L75,460" stroke="#6e2f14" stroke-width="3" fill="none"/>
+  </g>
+  <text x="18" y="420" fill="#fff2d5" font-size="22" font-weight="bold" transform="rotate(-82 18 420)">КАНЬОН КРАСНЫХ СКАЛ</text>
+
+  <!-- Дюны - центр и восток -->
+  <g opacity="0.95">
+    <g fill="url(#duneShade)" stroke="#8a6230" stroke-width="2.5">
+      <path d="M220,180 Q350,140 480,180 Q420,230 300,230 Q240,225 220,180"/>
+      <path d="M500,150 Q680,100 860,160 Q750,220 600,210 Q520,200 500,150"/>
+      <path d="M880,200 Q1020,170 1150,220 Q1080,270 960,265 Q895,250 880,200"/>
+      <path d="M250,350 Q400,310 550,360 Q480,410 340,410 Q270,400 250,350"/>
+      <path d="M620,340 Q800,290 970,350 Q880,410 720,410 Q640,395 620,340"/>
+      <path d="M180,560 Q340,510 520,560 Q450,620 280,620 Q200,600 180,560"/>
+      <path d="M700,560 Q880,510 1080,570 Q1000,630 820,630 Q730,615 700,560"/>
+      <path d="M360,680 Q500,650 650,685 Q580,730 430,730 Q380,715 360,680"/>
+    </g>
+    <g stroke="#8a6230" stroke-width="1.5" opacity="0.5" fill="none">
+      <path d="M260,190 Q350,175 440,190"/><path d="M560,165 Q680,140 800,165"/><path d="M300,365 Q400,345 500,367"/><path d="M680,355 Q790,330 910,357"/><path d="M240,575 Q350,550 470,575"/><path d="M760,575 Q880,550 1020,580"/>
+    </g>
+  </g>
+  <text x="480" y="300" fill="#6b4d2a" font-size="30" font-style="italic" opacity="0.7" text-anchor="middle">Великие Дюны Шепота</text>
+  <text x="830" y="700" fill="#6b4d2a" font-size="24" font-style="italic" opacity="0.7" text-anchor="middle">Море Барханов</text>
+
+  <!-- Оазис в центре -->
+  <g>
+    <ellipse cx="620" cy="480" rx="135" ry="95" fill="#5da244" stroke="#2f5b22" stroke-width="4"/>
+    <ellipse cx="620" cy="480" rx="110" ry="75" fill="#7cc35a"/>
+    <ellipse cx="620" cy="485" rx="62" ry="38" fill="url(#oasisWater)" stroke="#0f4c5c" stroke-width="3"/>
+    <!-- пальмы -->
+    <g font-size="36" text-anchor="middle">
+      <text x="560" y="465">🌴</text><text x="685" y="460">🌴</text><text x="545" y="525">🌴</text><text x="700" y="520">🌴</text><text x="615" y="435">🌴</text>
+    </g>
+    <g>
+      <rect x="595" y="520" width="50" height="26" rx="4" fill="#8b5a2b" stroke="#4a2f14" stroke-width="2"/>
+      <path d="M595,520 L620,505 L645,520" fill="#c0392b"/>
+      <text x="620" y="539" text-anchor="middle" font-size="13" fill="white" font-weight="bold">ШАТЁР</text>
+    </g>
+  </g>
+  <g>
+    <rect x="505" y="555" width="230" height="36" rx="18" fill="#1d2b1a" opacity="0.9"/>
+    <text x="620" y="579" text-anchor="middle" fill="#ffe9a8" font-size="20" font-weight="bold">💧 ОАЗИС АЙН-САХАРА</text>
+  </g>
+
+  <!-- Второй маленький оазис -->
+  <g>
+    <ellipse cx="1020" cy="420" rx="55" ry="40" fill="#5da244" stroke="#2f5b22" stroke-width="3"/>
+    <ellipse cx="1020" cy="422" rx="28" ry="18" fill="url(#oasisWater)" stroke="#0f4c5c" stroke-width="2"/>
+    <text x="1020" y="395" font-size="28" text-anchor="middle">🌴</text>
+    <text x="1020" y="477" text-anchor="middle" font-size="16" font-weight="bold" fill="#2f5b22">Колодец Мираж</text>
+  </g>
+
+  <!-- Развалины -->
+  <g>
+    <g fill="#9a9a9a" stroke="#4a4a4a" stroke-width="2.5">
+      <rect x="300" y="620" width="28" height="42" transform="rotate(-12 300 620)"/>
+      <rect x="340" y="630" width="24" height="32" transform="rotate(8 340 630)"/>
+      <rect x="270" y="640" width="90" height="18"/>
+      <path d="M280,640 L290,600 L310,600 L320,640 Z"/>
+      <circle cx="385" cy="650" r="14"/>
+    </g>
+    <text x="325" y="705" text-anchor="middle" font-size="17" font-weight="bold" fill="#4a2e12">🏛️ РУИНЫ ЗЕР-ТУЛА</text>
+    <text x="325" y="722" text-anchor="middle" font-size="13" fill="#6b4d2a" font-style="italic">опасно: скорпионы</text>
+  </g>
+
+  <!-- Гробница / пирамида -->
+  <g>
+    <path d="M920,620 L990,520 L1060,620 Z" fill="#d9b06a" stroke="#6b4d2a" stroke-width="3"/>
+    <path d="M990,520 L990,620" stroke="#8a6230" stroke-width="2"/>
+    <path d="M945,585 L1035,585 M958,562 L1022,562" stroke="#8a6230" stroke-width="1.5"/>
+    <text x="990" y="648" text-anchor="middle" font-size="17" font-weight="bold" fill="#4a2e12">ПИРАМИДА САХАР-РА</text>
+  </g>
+
+  <!-- Караванный путь -->
+  <path d="M130,700 C250,650 300,600 400,580 C500,560 540,540 580,500 C610,475 650,470 700,460 C800,440 900,430 1020,420 C1080,415 1120,350 1140,250" fill="none" stroke="#5a2d0c" stroke-width="5" stroke-dasharray="16 10" stroke-linecap="round"/>
+  <path d="M130,700 C250,650 300,600 400,580 C500,560 540,540 580,500 C610,475 650,470 700,460 C800,440 900,430 1020,420 C1080,415 1120,350 1140,250" fill="none" stroke="#ffe9a8" stroke-width="2" stroke-dasharray="16 10" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Точки пути -->
+  <g font-size="26" text-anchor="middle">
+    <text x="130" y="715">🏕️</text><text x="400" y="585">🐪</text><text x="1140" y="245">🏰</text>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#2b1a08">
+    <rect x="60" y="720" width="140" height="24" rx="6" fill="#ffe9a8" stroke="#5a2d0c"/><text x="130" y="737" text-anchor="middle">Лагерь Западный</text>
+    <rect x="340" y="592" width="125" height="24" rx="6" fill="#ffe9a8" stroke="#5a2d0c"/><text x="402" y="609" text-anchor="middle">Караван 🐪</text>
+    <rect x="1055" y="195" width="135" height="24" rx="6" fill="#ffe9a8" stroke="#5a2d0c"/><text x="1122" y="212" text-anchor="middle">Форт Северный</text>
+  </g>
+
+  <!-- Скелет дракона / кости -->
+  <g opacity="0.9">
+    <path d="M760,240 Q790,230 820,245 Q810,270 780,270 Q750,265 760,240" fill="#f5efe0" stroke="#6b4d2a" stroke-width="2"/>
+    <circle cx="815" cy="248" r="10" fill="#f5efe0" stroke="#6b4d2a" stroke-width="2"/>
+    <path d="M730,260 L760,250 M740,275 L765,262" stroke="#6b4d2a" stroke-width="2"/>
+    <text x="780" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#6b4d2a">Кости Левиафана</text>
+  </g>
+
+  <!-- Зыбучие пески - опасность -->
+  <g>
+    <ellipse cx="450" cy="460" rx="70" ry="30" fill="none" stroke="#a52a2a" stroke-width="3" stroke-dasharray="8 6"/>
+    <text x="450" y="465" text-anchor="middle" font-size="28">⚠️</text>
+    <text x="450" y="505" text-anchor="middle" font-size="14" font-weight="bold" fill="#a52a2a">ЗЫБУЧИЕ ПЕСКИ</text>
+  </g>
+
+  <!-- Компас -->
+  <g transform="translate(1100,700)">
+    <circle r="42" fill="#fff8e0" stroke="#5a3d1e" stroke-width="4"/>
+    <path d="M0,-32 L8,0 L0,32 L-8,0 Z" fill="#c0392b"/>
+    <path d="M-32,0 L0,8 L32,0 L0,-8 Z" fill="#2c3e50"/>
+    <text y="-48" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff8e0">С</text>
+    <text y="4" text-anchor="middle" font-size="14" font-weight="bold">★</text>
+  </g>
+
+  <!-- Рамка -->
+  <rect x="4" y="4" width="1192" height="792" fill="none" stroke="#5a3d1e" stroke-width="8"/>
+</svg>
+</div>
+
+<div class="legend">
+  <span>🐪 — караванный путь</span>
+  <span>💧 — вода / оазис</span>
+  <span>🏛️ — руины</span>
+  <span>⚠️ — опасность</span>
+  <span>🏕️ — лагерь</span>
+</div>
+
+<button onclick="window.print()">🖨️ Печать карты</button>
+<p class="sub">Файл: desert-map.html • Открой в браузере • Можно распечатать или сделать скриншот для игры</p>
+</body>
+</html>
